@@ -1,6 +1,0 @@
-Analysis Goals:
-
--plot of duration histograms for members and casual
--plot of #trips by location for members and casual
--plot of #cycles by location for members and casual
--plot of type of bike for members and casual
