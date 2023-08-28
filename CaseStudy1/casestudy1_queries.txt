@@ -1,0 +1,127 @@
+*****adding values from trip duration in minutes************
+
+UPDATE `casestudy1-396723.Trips.Alldata`
+SET duration =
+(SELECT extract(hour from ended_at-started_at)*60+extract(minute from ended_at-started_at))
+where extract(day from ended_at-started_at) < 1;
+
+*****adding values from day_of_week************
+
+UPDATE `casestudy1-396723.Trips.Alldata`
+SET day_of_week =
+(SELECT format_datetime("%A", started_at))
+where ride_id is not null;
+
+******Cleaning / Checks************
+
+***no entries where member status is invalid***
+
+SELECT count(*) FROM `casestudy1-396723.Trips.Alldata`
+WHERE member_type <> 'member' and member_type <> 'casual'
+and duration is not null;
+
+******Query entries where time of use is more than 1 day.
+Save these results (14,122 rows) into new table as a back-up
+and remove these rows from full data table.
+
+SELECT * FROM `casestudy1-396723.Trips.Alldata`
+WHERE extract(day from ended_at-started_at) >= 1; (save into new table)
+
+DELETE FROM `casestudy1-396723.Trips.Alldata`
+WHERE extract(day from ended_at-started_at) >= 1;
+
+******Query entries where time of use is less than 1 minute.
+Save these results into new table as a back-up
+and remove these rows from full data table.
+
+SELECT * FROM `casestudy1-396723.Trips.Alldata`
+WHERE duration = 0; (save into new table)
+
+DELETE FROM `casestudy1-396723.Trips.Alldata`
+WHERE duration = 0;
+
+******Query entries where time of use is negative.
+
+SELECT * FROM `casestudy1-396723.Trips.Alldata`
+WHERE duration < 0; (save into new table)
+
+delete from `casestudy1-396723.Trips.Alldata`
+where duration < 0;
+
+***Insert rows with positive longitude***
+
+INSERT INTO `casestudy1-396723.Trips.Alldata`
+SELECT * FROM `casestudy1-396723.Trips.Duration_less_than_1_minute`
+
+***Update duration less than 1 minute (fix longitude)****
+UPDATE `casestudy1-396723.Trips.Alldata`
+SET start_lon = -1 * start_lon
+WHERE start_lon > 0;
+
+UPDATE `casestudy1-396723.Trips.Alldata`
+SET end_lon = -1 * end_lon
+WHERE end_lon > 0;
+
+
+
+STATS:
+
+number of casual users:
+
+SELECT count(*) FROM `casestudy1-396723.Trips.Alldata`
+WHERE member_type = 'casual';
+
+number of members:
+
+SELECT count(*) FROM `casestudy1-396723.Trips.Alldata`
+WHERE member_type = 'member';
+
+Analysis:
+
+**PowerBi data visualizations**
+--------------------------------------
+SELECT duration,count(*)/i as frequency,member_type FROM `casestudy1-396723.Trips.Alldata`
+group by duration,member_type
+order by duration;
+------------------------------------------
+SELECT day_of_week,member_type,count(*) as frequency FROM `casestudy1-396723.Trips.Alldata`
+group by day_of_week,member_type;
+------------------------------------------
+SELECT rideable_type,member_type,count(*) as frequency FROM `casestudy1-396723.Trips.Alldata`
+group by rideable_type,member_type;
+------------------------------------------
+SELECT extract(hour from started_at) as Hour_of_day,member_type,count(*) as frequency FROM `casestudy1-396723.Trips.Alldata`
+group by extract(hour from started_at),member_type;
+------------------------------------------
+**Tableau Visualizations***
+---------------------------------------------
+SELECT round(start_lat,2) as start_lat,round(start_lon,2) as start_lon,count(*),member_type
+FROM `casestudy1-396723.Trips.Alldata`
+WHERE start_lat is not null and
+start_lon is not null and
+end_lat is not null and
+end_lon is not null
+group by member_type,round(start_lat,2),round(start_lon,2)
+------------------------------------------
+SELECT round(start_lat,2) as start_lat,round(start_lon,2) as start_lon,count(*),rideable_type
+FROM `casestudy1-396723.Trips.Alldata`
+WHERE start_lat is not null and
+start_lon is not null and
+end_lat is not null and
+end_lon is not null
+group by rideable_type,round(start_lat,2),round(start_lon,2)
+-----------------------------------------------------------------
+----------------------------------------------------------------------------------------
+SELECT distinct start_station_name,round(start_lat,2) as e_lat,round(start_lon,2) as e_lon FROM `casestudy1-396723.Trips.Alldata`
+where start_station_name is not null and end_station_name is not null
+and rideable_type = "docked_bike";
+
+SELECT distinct start_station_name,round(start_lat,2) as e_lat,round(start_lon,2) as e_lon FROM `casestudy1-396723.Trips.Alldata`
+where start_station_name is not null and end_station_name is not null
+and rideable_type = "electric_bike";
+
+
+
+
+
+
