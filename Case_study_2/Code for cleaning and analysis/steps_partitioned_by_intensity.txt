@@ -1,0 +1,6 @@
+SELECT Id,avg(TotalSteps) as steps,avg(TotalDistance) as tot_distance,avg(LoggedActivitiesDistance) as logged_distance,
+avg(LightActiveDistance) as light,avg(ModeratelyActiveDistance) as moderate,avg(VeryActiveDistance) as veryactive,
+avg(Calories) as Calories
+FROM `casestudy2-398016.Health_data.dailyActivity_merged`
+group by Id
+order by Id;

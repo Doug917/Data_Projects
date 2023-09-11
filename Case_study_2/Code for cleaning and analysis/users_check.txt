@@ -1,0 +1,32 @@
+Select *,count(*) as counts from
+(SELECT distinct Id,'T1' as label FROM `casestudy2-398016.Health_data.dailyActivity_merged`
+union all
+SELECT distinct Id,'T2' as label FROM `casestudy2-398016.Health_data.dailyCalories_merged`
+union all
+SELECT distinct Id,'T3' as label FROM `casestudy2-398016.Health_data.dailyIntensities_merged`
+union all
+SELECT distinct Id,'T4' as label FROM `casestudy2-398016.Health_data.dailySteps_merged`
+union all
+SELECT distinct Id,'T5' as label FROM `casestudy2-398016.Health_data.heartrate_seconds_mergedupdated`
+union all
+SELECT distinct Id,'T6' as label FROM `casestudy2-398016.Health_data.hourlyCalories_mergedupdated`
+union all
+SELECT distinct Id,'T7' as label FROM `casestudy2-398016.Health_data.hourlyIntensities_mergedupdated`
+union all
+SELECT distinct Id,'T8' as label FROM `casestudy2-398016.Health_data.hourlySteps_mergedupdated`
+union all
+SELECT distinct Id,'T9' as label FROM `casestudy2-398016.Health_data.minuteCaloriesNarrow_mergedupdated`
+union all
+SELECT distinct Id,'T10' as label FROM `casestudy2-398016.Health_data.minuteIntensitiesNarrow_mergedupdated`
+union all
+SELECT distinct Id,'T11' as label FROM `casestudy2-398016.Health_data.minuteMETsNarrow_mergedupdated`
+union all
+SELECT distinct Id,'T12' as label FROM `casestudy2-398016.Health_data.minuteSleep_mergedupdated`
+union all
+SELECT distinct Id,'T13' as label FROM `casestudy2-398016.Health_data.minuteStepsNarrow_mergedupdated`
+union all
+SELECT distinct Id,'T14' as label FROM `casestudy2-398016.Health_data.sleepDay_mergedupdated`
+union all
+SELECT distinct Id,'T15' as label FROM `casestudy2-398016.Health_data.weightLogInfo_mergedupdated`)
+group by Id,label
+having label='T15';#adjust this for each table, to find number of unique users for each data set.

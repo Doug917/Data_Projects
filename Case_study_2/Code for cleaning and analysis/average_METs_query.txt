@@ -1,0 +1,3 @@
+SELECT Id, extract(hour from ActivityMinute) as hour_of_day, AVG(METs) FROM `casestudy2-398016.Health_data.minuteMETsNarrow_mergedupdated`
+group by Id,hour_of_day
+order by Id,AVG(METs);

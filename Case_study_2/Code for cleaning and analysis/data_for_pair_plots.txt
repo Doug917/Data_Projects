@@ -1,0 +1,5 @@
+SELECT I.*,C.Calories, S.StepTotal FROM `casestudy2-398016.Health_data.dailyCalories_merged` C
+inner join `casestudy2-398016.Health_data.dailySteps_merged` S
+on C.Id = S.Id and C.ActivityDay = S.ActivityDay
+inner join `casestudy2-398016.Health_data.dailyIntensities_merged` I
+on S.Id = I.Id and S.ActivityDay = I.ActivityDay;

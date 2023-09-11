@@ -1,0 +1,52 @@
+0.  Business task:  Analyze smart product to see how customers are using.
+Set out high-level recommendations based on analysis process.
+
+Guidelines:
+Ask SMART questions: specific, measurable, action-oriented, relevant and time-bound.
+
+Ask:
+Study trends in smart device use, how these trends would apply to Bellabeat customers,
+and how these trends could influence their strategy.
+
+Key stakeholders are analyists, a mathematician, and the chief creative officer.
+Therefore, my presentation will include some mathematical insights,
+presented in a high-level way, with details of mathematics given in appendix.
+
+a.  How many individual users are there in the data?	done
+b.  Over what time was the data collected?	done
+c.  What are the peak times in activity during a typical day for users?
+d.  What are mean steps/day for users?
+d.  What are trends in steps v calories,
+			intensity v calories
+			intensity/step v calories
+			heartrate v calories
+			heartrate v intensity
+
+
+Prepare:
+
+1.  Load csv files into BigQuery tables.
+2.  Use BigQuery to create some summary stats and clean data.
+3.  Ensure proper formatting by enforcing table shema upon
+table creation in BigQuery.  Check for missing values and potential errors in data.
+Remove data that takes away from the integrity and document any data
+removed and/or not used in the analysis.
+
+The plan here is to use BigQuery to clean the data and give some summary
+stats.  Then, use R to perform more detailed analysis on cleaned data
+and to produce visualizations.
+
+Issue 1:  BigQuery is unable to parse date and time values in hourly and minute csv tables.
+Issue 2:  Google Sheets has trouble handling data required to text-split the date-time entries.
+Solution:  Write python script to directly modify the csv files.  Create updated csv file(s)
+with date-time object split into date and 24-hour time.
+
+format for csv files to be uploaded as DATETIME:  YYYY-MM-DD HH:MM:SS
+
+Process:
+
+Analyze:
+
+Share:
+
+Act:

@@ -1,0 +1,30 @@
+
+SELECT *,'T1' as label FROM `casestudy2-398016.Health_data.dailyActivity_merged` where Id is null;
+
+SELECT *,'T2' as label FROM `casestudy2-398016.Health_data.dailyCalories_merged` where Id is null;
+
+SELECT *,'T3' as label FROM `casestudy2-398016.Health_data.dailyIntensities_merged` where Id is null;
+
+SELECT *,'T4' as label FROM `casestudy2-398016.Health_data.dailySteps_merged` where Id is null;
+
+SELECT *,'T5' as label FROM `casestudy2-398016.Health_data.heartrate_seconds_mergedupdated` where Id is null;
+
+SELECT *,'T6' as label FROM `casestudy2-398016.Health_data.hourlyCalories_mergedupdated` where Id is null;
+
+SELECT *,'T7' as label FROM `casestudy2-398016.Health_data.hourlyIntensities_mergedupdated` where Id is null;
+
+SELECT *,'T8' as label FROM `casestudy2-398016.Health_data.hourlySteps_mergedupdated` where Id is null;
+
+SELECT *,'T9' as label FROM `casestudy2-398016.Health_data.minuteCaloriesNarrow_mergedupdated` where Id is null;
+
+SELECT *,'T10' as label FROM `casestudy2-398016.Health_data.minuteIntensitiesNarrow_mergedupdated` where Id is null;
+
+SELECT *,'T11' as label FROM `casestudy2-398016.Health_data.minuteMETsNarrow_mergedupdated` where Id is null;
+
+SELECT *,'T12' as label FROM `casestudy2-398016.Health_data.minuteSleep_mergedupdated` where Id is null;
+
+SELECT *,'T13' as label FROM `casestudy2-398016.Health_data.minuteStepsNarrow_mergedupdated` where Id is null;
+
+SELECT *,'T14' as label FROM `casestudy2-398016.Health_data.sleepDay_mergedupdated` where Id is null;
+
+SELECT *,'T15' as label FROM `casestudy2-398016.Health_data.weightLogInfo_mergedupdated` where Id is null;
