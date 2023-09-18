@@ -3,9 +3,7 @@
 This is a collection of data projects.
 Each project folder has:
 
--raw data
--supporting codes (e.g. python scripts with SQL or pandas tools) for
-cleaning data, building and updating databases, or performing
-queries and statistical analysis to support visuals and data insights.
--one or more visualizations (made with any of Looker, Tableau, Power BI, or R)
--a presentation file that summarizes results and proposes conclusions/recommendations.
+-Documentation of code/queries for cleaning and processing data
+-PowerPoint presentation summarizing business task for the case study,
+data cleaning/analysis process, insights for the data, and possible
+recommendations to stakeholders.
