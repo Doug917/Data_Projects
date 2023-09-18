@@ -11,17 +11,11 @@ where rowval=i/4 or rowval=i/2 or rowval=3*i/4;
 
 #Daily Calories
 
-declare i int64;
-set i = (select count(*) from `casestudy2-398016.Health_data.dailyActivity_merged`);
-
 select * from
 (SELECT Calories,row_number() over(order by Calories asc) as rowval FROM `casestudy2-398016.Health_data.dailyActivity_merged`)
 where rowval=i/4 or rowval=i/2 or rowval=3*i/4;
 
 #Daily Distance
-
-declare i int64;
-set i = (select count(*) from `casestudy2-398016.Health_data.dailyActivity_merged`);
 
 select * from
 (SELECT TotalDistance,row_number() over(order by TotalDistance asc) as rowval FROM `casestudy2-398016.Health_data.dailyActivity_merged`)
@@ -29,26 +23,17 @@ where rowval=i/4 or rowval=i/2 or rowval=3*i/4;
 
 #VeryActiveMinutes
 
-declare i int64;
-set i = (select count(*) from `casestudy2-398016.Health_data.dailyActivity_merged`);
-
 select * from
 (SELECT VeryActiveMinutes,row_number() over(order by VeryActiveMinutes asc) as rowval FROM `casestudy2-398016.Health_data.dailyActivity_merged`)
 where rowval=i/4 or rowval=i/2 or rowval=3*i/4;
 
 #LightlyActiveMinutes
 
-declare i int64;
-set i = (select count(*) from `casestudy2-398016.Health_data.dailyActivity_merged`);
-
 select * from
 (SELECT LightlyActiveMinutes,row_number() over(order by LightlyActiveMinutes asc) as rowval FROM `casestudy2-398016.Health_data.dailyActivity_merged`)
 where rowval=i/4 or rowval=i/2 or rowval=3*i/4;
 
 #FairlyActiveMinutes
-
-declare i int64;
-set i = (select count(*) from `casestudy2-398016.Health_data.dailyActivity_merged`);
 
 select * from
 (SELECT FairlyActiveMinutes,row_number() over(order by FairlyActiveMinutes asc) as rowval FROM `casestudy2-398016.Health_data.dailyActivity_merged`)
