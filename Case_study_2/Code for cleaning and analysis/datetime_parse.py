@@ -1,6 +1,12 @@
 import csv
 import sys
 
+"""
+File is run for raw Fitbit csv data files.  Outputs updated files
+with suffix "updated".  The time fields are updated from raw format to
+formal TIMESTAMP format for easy table upload to BigQuery.
+"""
+
 #Second command line argument is name of origianl csv file to be cleaned.
 filename = sys.argv[1]
 fieldname_input = sys.argv[2]
